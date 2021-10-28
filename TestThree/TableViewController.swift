@@ -34,10 +34,9 @@ class TableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-    cell.backgroundColor = arrayColors[indexPath.item]
+    let cell = tableView.dequeueReusableCell(withIdentifier: "otherIdenifierCell", for: indexPath) as! OtherTableViewCell
     // Configure the cell...
-    
+    cell.dateLabel.text = "10 min ago"
     return cell
   }
   

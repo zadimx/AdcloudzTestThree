@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D0461EC272AE86B001CAC06 /* OtherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0461EB272AE86B001CAC06 /* OtherTableViewCell.swift */; };
 		1DEF74352728338600955FDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF74342728338600955FDC /* AppDelegate.swift */; };
 		1DEF74392728338600955FDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF74382728338600955FDC /* ViewController.swift */; };
 		1DEF743C2728338600955FDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DEF743A2728338600955FDC /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D0461EB272AE86B001CAC06 /* OtherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTableViewCell.swift; sourceTree = "<group>"; };
 		1DEF74312728338500955FDC /* TestThree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestThree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEF74342728338600955FDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DEF74382728338600955FDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				1DEF743D2728338800955FDC /* Assets.xcassets */,
 				1DEF743F2728338800955FDC /* LaunchScreen.storyboard */,
 				1DEF74422728338800955FDC /* Info.plist */,
+				1D0461EB272AE86B001CAC06 /* OtherTableViewCell.swift */,
 			);
 			path = TestThree;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D0461EC272AE86B001CAC06 /* OtherTableViewCell.swift in Sources */,
 				1DEF74392728338600955FDC /* ViewController.swift in Sources */,
 				1DEF748E27297EA900955FDC /* TableViewController.swift in Sources */,
 				1DEF74352728338600955FDC /* AppDelegate.swift in Sources */,
