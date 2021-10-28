@@ -8,7 +8,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-  var x: Int = 21213
   
   override func viewDidLoad() {
     super.viewDidLoad()
