@@ -23,5 +23,10 @@ class OtherTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    func set(object: Other){
+        self.dateLabel.text = object.dateLabel
+        self.imageNews.image = UIImage(data: (try? Data(contentsOf: URL(string: object.imageNews)!))!)
+        self.historyLabel.text = object.historyLabel
+        self.descriptionNewsTextView.text = object.descriptionNewsTextView
+    }
 }
