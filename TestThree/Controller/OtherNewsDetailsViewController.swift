@@ -22,7 +22,8 @@ class OtherNewsDetailsViewController: UIViewController {
     
     // Do any additional setup after loading the view.
   }
-  
+
+
   func updateUI(){
     otherNewsDetailsImageView.image = UIImage(data: (try? Data(contentsOf: URL(string: otherDetailsObject.imageNews)!))!)
     otherNewsDetailsDateLabel.text = otherDetailsObject.dateLabel

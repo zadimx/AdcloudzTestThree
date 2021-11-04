@@ -8,11 +8,22 @@
 import UIKit
 
 class TableViewController: UITableViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+  var objectOtherTableViewCellModel = [
+    Other(dateLabel: "1 min ago", historyLabel: "history1", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON1", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
+    Other(dateLabel: "2 min ago", historyLabel: "history2", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON2", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
+    Other(dateLabel: "3 min ago", historyLabel: "history3", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON3", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg")
+  ]
+  let urlString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=dda979c66ca84f9795d7856f49458efe"
+  
+  let networkService = NetworkService()
+  var searchPerson: Root? = nil
+  
+
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return objectOtherTableViewCellModel.count
   }
-  
+
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as! MyCollectionViewCell
     cell.configuration(with: objectOtherTableViewCellModel[indexPath.row])
@@ -22,50 +33,79 @@ class TableViewController: UITableViewController, UICollectionViewDelegateFlowLa
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: 300, height: 800)
   }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+  }
 
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    if indexPath.row == objectOtherTableViewCellModel.count-1 && indexPath.row<=10{
+      networkService.request(urlString: urlString) {[weak self]/*утечка данных*/ (result) in
+          switch result {
+
+          case .success(let searchPerson):
+              self?.searchPerson = searchPerson
+            self?.objectOtherTableViewCellModel.append(Other(dateLabel: searchPerson.articles[indexPath.row].publishedAt ?? "", historyLabel: searchPerson.articles[indexPath.row].publishedAt ?? "", descriptionNewsTextView: searchPerson.articles[indexPath.row].content ?? "", imageNews: searchPerson.articles[indexPath.row].urlToImage ?? ""))
+            
+            collectionView.reloadData()
+            self!.tableView.reloadData()
+            case .failure(let error):
+                print("error", error)
+          }
+      }
+
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    self.performSegue(withIdentifier: "identifierMainDetal", sender: indexPath)
+    
+  }
   @IBOutlet var collectionView: UICollectionView!
   
   @IBOutlet var mainTableView: UITableView!
-  let objectOtherTableViewCellModel = [
-    Other(dateLabel: "1 min ago", historyLabel: "history1", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON1", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
-    Other(dateLabel: "2 min ago", historyLabel: "history2", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON2", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
-    Other(dateLabel: "3 min ago", historyLabel: "history3", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON3", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
-    Other(dateLabel: "4 min ago", historyLabel: "history4", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON4", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
-    Other(dateLabel: "5 min ago", historyLabel: "history5", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON5", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
-    Other(dateLabel: "6 min ago", historyLabel: "history6", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON6", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
-    Other(dateLabel: "7 min ago", historyLabel: "history7", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON7", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
-    Other(dateLabel: "8 min ago", historyLabel: "history8", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSO8", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
-    Other(dateLabel: "9 min ago", historyLabel: "history9", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON9", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg")
-  ]
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
   }
   override func viewDidLoad() {
     super.viewDidLoad()
+    networkService.request(urlString: urlString) {[weak self]/*утечка данных*/ (result) in
+        switch result {
+
+        case .success(let searchPerson):
+            self?.searchPerson = searchPerson
+          print("$$$ \(searchPerson.articles[0].title)")
+          self?.objectOtherTableViewCellModel = [Other(dateLabel: searchPerson.articles[0].publishedAt ?? "", historyLabel: searchPerson.articles[0].publishedAt ?? "", descriptionNewsTextView: searchPerson.articles[0].content ?? "", imageNews: searchPerson.articles[0].urlToImage ?? ""),Other(dateLabel: searchPerson.articles[1].publishedAt ?? "", historyLabel: searchPerson.articles[1].publishedAt ?? "", descriptionNewsTextView: searchPerson.articles[1].content ?? "", imageNews: searchPerson.articles[1].urlToImage ?? ""),Other(dateLabel: searchPerson.articles[2].publishedAt ?? "", historyLabel: searchPerson.articles[2].publishedAt ?? "", descriptionNewsTextView: searchPerson.articles[2].content ?? "", imageNews: searchPerson.articles[2].urlToImage ?? "")]
+          case .failure(let error):
+              print("error", error)
+        }
+    }
     collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
     collectionView.delegate = self
     collectionView.dataSource = self
-//    let cell1 = tableView.register(UITableViewCell.self, forCellReuseIdentifier: "qqqq") as! MainCollectionViewCell
-//    cell1.img.image = UIImage(data: (try? Data(contentsOf: URL(string: objectOtherTableViewCellModel[1].imageNews)!))!)
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    
+    tableView.reloadData()
+    tableView.reloadInputViews()
+    
   }
-
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     super.prepare(for: segue, sender: sender)
-    guard segue.identifier == "indentifierOtherDetailsNews" || segue.identifier == "identifierMainDetal" else {return}
+    if segue.identifier == "indentifierOtherDetailsNews"{
     let indexPath = tableView.indexPathForSelectedRow!
     let objectOtherNews = objectOtherTableViewCellModel[indexPath.row]
-    let navigationViewController = segue.destination as! UINavigationController
-    let otherNewsDetailsViewController = navigationViewController.topViewController as! OtherNewsDetailsViewController
-    otherNewsDetailsViewController.otherDetailsObject = objectOtherNews
-    
+    let navigationViewController = segue.destination as! OtherNewsDetailsViewController
+      navigationViewController.otherDetailsObject = objectOtherNews
+  }
+    if segue.identifier == "identifierMainDetal"{
+      let navigationViewController = segue.destination as! OtherNewsDetailsViewController
+      let indexPath = collectionView.indexPathsForSelectedItems!
+      let index = indexPath[0]
+      let element = index[1]
+      navigationViewController.otherDetailsObject = objectOtherTableViewCellModel[element]
+  }
     
   }
 
@@ -82,6 +122,7 @@ class TableViewController: UITableViewController, UICollectionViewDelegateFlowLa
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: "otherIdenifierCell", for: indexPath) as! OtherTableViewCell
     // Configure the cell...
     let object = objectOtherTableViewCellModel[indexPath.row]
@@ -89,7 +130,23 @@ class TableViewController: UITableViewController, UICollectionViewDelegateFlowLa
     return cell
   }
 
-  
+  override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+      if indexPath.row == objectOtherTableViewCellModel.count-1 && indexPath.row<=10 {
+        networkService.request(urlString: urlString) {[weak self]/*утечка данных*/ (result) in
+            switch result {
+
+            case .success(let searchPerson):
+                self?.searchPerson = searchPerson
+              self?.objectOtherTableViewCellModel.append(Other(dateLabel: searchPerson.articles[indexPath.row].publishedAt ?? "", historyLabel: searchPerson.articles[indexPath.row].publishedAt ?? "", descriptionNewsTextView: searchPerson.articles[indexPath.row].content ?? "", imageNews: searchPerson.articles[indexPath.row].urlToImage ?? ""))
+              print("@@@@@@@ \(self!.objectOtherTableViewCellModel.count)")
+              tableView.reloadData()
+              case .failure(let error):
+                  print("error", error)
+            }
+        }
+
+      }
+  }
   /*
    // Override to support conditional editing of the table view.
    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -134,5 +191,4 @@ class TableViewController: UITableViewController, UICollectionViewDelegateFlowLa
    // Pass the selected object to the new view controller.
    }
    */
-  
 }

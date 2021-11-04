@@ -29,4 +29,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     myImageView.image = UIImage(data: (try? Data(contentsOf: URL(string: mainObject.imageNews)!))!)
   }
   
+//  func set() -> Other{
+//    return Other(dateLabel: myLabel.text ?? <#default value#>, historyLabel: myLabelHistory.text, descriptionNewsTextView: myTextView.text, imageNews: myImageView.image)
+//  }
 }
