@@ -13,7 +13,7 @@ class TableViewController: UITableViewController, UICollectionViewDelegateFlowLa
     Other(dateLabel: "2 min ago", historyLabel: "history2", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON2", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg"),
     Other(dateLabel: "3 min ago", historyLabel: "history3", descriptionNewsTextView: "Привет, это тестовый TextView Он будет стоять до парсинга JSON3", imageNews: "https://images.ua.prom.st/1954375335_w640_h640_dokshelter-alyuteh-dsf.jpg")
   ]
-  let urlString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=dda979c66ca84f9795d7856f49458efe"
+  let urlString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=0af1fbd249a447148be5eb4a3a6a6368"
   
   let networkService = NetworkService()
   var searchPerson: Root? = nil
