@@ -13,8 +13,8 @@
 		1D4F78C427301ECF008F5855 /* CollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D4F78C227301ECF008F5855 /* CollectionTableViewCell.xib */; };
 		1D4F78CA27301EF4008F5855 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4F78C827301EF4008F5855 /* MyCollectionViewCell.swift */; };
 		1D4F78CB27301EF4008F5855 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D4F78C927301EF4008F5855 /* MyCollectionViewCell.xib */; };
+		1D629B2A2742C82800E09128 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D629B292742C82800E09128 /* NetworkService.swift */; };
 		1D8816D227318393003936B2 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8816D127318393003936B2 /* Model.swift */; };
-		1D8816DA27318521003936B2 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8816D927318521003936B2 /* NetworkService.swift */; };
 		1DEF74352728338600955FDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEF74342728338600955FDC /* AppDelegate.swift */; };
 		1DEF743C2728338600955FDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DEF743A2728338600955FDC /* Main.storyboard */; };
 		1DEF743E2728338800955FDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DEF743D2728338800955FDC /* Assets.xcassets */; };
@@ -49,8 +49,8 @@
 		1D4F78C227301ECF008F5855 /* CollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionTableViewCell.xib; sourceTree = "<group>"; };
 		1D4F78C827301EF4008F5855 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D4F78C927301EF4008F5855 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		1D629B292742C82800E09128 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = "../../../../../../Downloads/Test 2/Test/Networking/NetworkService.swift"; sourceTree = "<group>"; };
 		1D8816D127318393003936B2 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		1D8816D927318521003936B2 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = "../../../../../Downloads/Test 2/Test/Networking/NetworkService.swift"; sourceTree = "<group>"; };
 		1DEF74312728338500955FDC /* TestThree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestThree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DEF74342728338600955FDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DEF743B2728338600955FDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		1D8816D027318341003936B2 /* Sevice */ = {
 			isa = PBXGroup;
 			children = (
-				1D8816D927318521003936B2 /* NetworkService.swift */,
+				1D629B292742C82800E09128 /* NetworkService.swift */,
 				1D8816D127318393003936B2 /* Model.swift */,
 			);
 			path = Sevice;
@@ -340,11 +340,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D629B2A2742C82800E09128 /* NetworkService.swift in Sources */,
 				1D0461F1272C123F001CAC06 /* OtherTableViewCellModel.swift in Sources */,
 				1D4F78CA27301EF4008F5855 /* MyCollectionViewCell.swift in Sources */,
 				1D4F78C327301ECF008F5855 /* CollectionTableViewCell.swift in Sources */,
 				1D0461EC272AE86B001CAC06 /* OtherTableViewCell.swift in Sources */,
-				1D8816DA27318521003936B2 /* NetworkService.swift in Sources */,
 				1DEF748E27297EA900955FDC /* TableViewController.swift in Sources */,
 				1DEF74352728338600955FDC /* AppDelegate.swift in Sources */,
 				F56297A52E4E04EDA36BAACC /* OtherNewsDetailsViewController.swift in Sources */,
